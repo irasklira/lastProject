@@ -78,6 +78,14 @@
           <element id="library" level="project" name="Maven: org.apache.tiles:tiles-autotag-core-runtime:1.2" />
           <element id="library" level="project" name="Maven: org.apache.tiles:tiles-request-jsp:1.0.7" />
           <element id="library" level="project" name="Maven: javax.servlet:jstl:1.2" />
+          <element id="library" level="project" name="Maven: org.junit.jupiter:junit-jupiter:5.7.0" />
+          <element id="library" level="project" name="Maven: org.junit.jupiter:junit-jupiter-api:5.7.0" />
+          <element id="library" level="project" name="Maven: org.apiguardian:apiguardian-api:1.1.0" />
+          <element id="library" level="project" name="Maven: org.opentest4j:opentest4j:1.2.0" />
+          <element id="library" level="project" name="Maven: org.junit.platform:junit-platform-commons:1.7.0" />
+          <element id="library" level="project" name="Maven: org.junit.jupiter:junit-jupiter-params:5.7.0" />
+          <element id="library" level="project" name="Maven: org.junit.jupiter:junit-jupiter-engine:5.7.0" />
+          <element id="library" level="project" name="Maven: org.junit.platform:junit-platform-engine:1.7.0" />
         </element>
       </element>
       <element id="directory" name="META-INF">
