@@ -10,4 +10,9 @@
         <put-attribute name="body" value="" />
         <put-attribute name="footer" value="/WEB-INF/views/template/client/footer/jsp" />
     </definition>
+
+    <definition name="board/*" extends="content">
+        <put-attribute name="title" value="기본 게시판" />
+        <put-attribute name="body" value="/WEB-INF/views/board/{1}.jsp"
+    </definition>
 </tiles-definitions>
