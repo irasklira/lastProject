@@ -49,7 +49,7 @@
         <!-- Begin page content -->
         <div class="container">
             <div class="page-header">
-                <h1><tiles:getAsString name="title"</h1>
+                <h1><tiles:getAsString name="title" /></h1>
             </div>
             <tiles:insertAttribute name="body" />
         </div>
