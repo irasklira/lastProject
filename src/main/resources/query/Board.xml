@@ -4,9 +4,16 @@
 
     <!-- 게시판 리스트 기본 조회 -->
     <select id="boardList" parameterType="board" resultType="board">
-   SELECT b_num, b_name, b_title, to_char(b_date, 'YYYY-MM-DD')as b_date
-   FROM spring_board
-   ORDER BY b_num desc
-</select>
+       SELECT b_num, b_name, b_title, to_char(b_date, 'YYYY-MM-DD')as b_date
+       FROM spring_board
+       ORDER BY b_num desc
+    </select>
 
+    <insert id="boardInsert" parameterType="board">
+        <selectKey keyProperty="b_num" resultType="int" order="BEFORE">
+            select SPRING_BOARD_SEQ.nextval from dual
+        </selectKey>
+        insert into spring_board(b_num, b_name, b_title, b_content, b_pwd)
+        values(#{b_num}, #{b_name}, #{b_title}, #{b_content}, #{b_pwd})
+    </insert>
 </mapper>

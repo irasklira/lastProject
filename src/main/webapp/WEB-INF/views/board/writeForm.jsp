@@ -29,7 +29,7 @@
     <script type="text/javascript" src="/resources/include/dist/js/bootstrap.min.js"></script>
     <script type="text/javascript">
         $(function(){
-            $("#submit_btn").click(function(){
+            $("#boardInsertBtn").click(function(){
                 if(!chkData("#b_name","이름을")) return;
                 else if(!chkData("#b_title","제목을")) return;
                 else if(!chkData("#b_content","작성할 내용을")) return;
@@ -42,7 +42,19 @@
                     $("#f_writeForm").submit();
                 }
             });
-        });
+
+            //취소 버튼 클릭 시 처리 이벤트
+            $("#boardCancelBtn").click(function(){
+                $("#f_writeForm").each(function(){
+                    this.reset();
+                });
+            });
+
+            //목록 버튼 클릭 시 처리 이벤트
+            $("#boardListBtn").click(function(){
+               location.href = "/board/boardList";
+            });
+        })
     </script>
 </head>
 <body>
@@ -76,7 +88,7 @@
                         <tr>
                             <td>비밀번호</td>
                             <td class="text-left">
-                            <td><input type="password" name="b_pwd" id="b_pwd" maxlength="16"/></td>
+                                <input type="password" name="b_pwd" id="b_pwd" maxlength="16"/>
                             </td>
                         </tr>
                     </tbody>
@@ -89,13 +101,5 @@
             </form>
         </div>
     </div>
-    <h3>글쓰기</h3>
-    <form id="frm1" name="frm1">
-        <div><input type="text" /></div>
-        <div><textarea width="500px" height="500px"></textarea></div>
-        <input type="button" value="전송" id="submit_btn" name="submit_btn" />
-        <input type="reset" value="취소" />
-        <input type="button" value="목록" id="list_btn" name="list_btn" />
-    </form>
 </body>
 </html>

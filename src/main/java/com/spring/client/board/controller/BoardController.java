@@ -1,44 +1,69 @@
 package com.spring.client.board.controller;
 
-import com.spring.client.board.service.BoardService;
-import com.spring.client.board.vo.BoardVO;
-import lombok.AllArgsConstructor;
-import lombok.extern.log4j.Log4j;
+import java.util.List;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import java.util.List;
+import com.spring.client.board.service.BoardService;
+import com.spring.client.board.vo.BoardVO;
+
+import lombok.AllArgsConstructor;
+import lombok.extern.log4j.Log4j;
 
 @Controller
 @Log4j
-@RequestMapping("/board/*")
+@RequestMapping("/board/")
 @AllArgsConstructor
 public class BoardController {
+
     private BoardService boardService;
 
+    /**************************************************
+     * 글목록 구현하기 (페이징 처리 목록 조회)
+     *************************************************/
     @RequestMapping(value="/boardList", method = RequestMethod.GET)
-    public String boardList(@ModelAttribute("data") BoardVO bvo, Model model){
+    //@GetMapping("/boardList")
+    public String boardList(@ModelAttribute("data") BoardVO bvo, Model model) {
         log.info("boardList 호출 성공");
-
+        //전체 레코드 조회
         List<BoardVO> boardList = boardService.boardList(bvo);
         model.addAttribute("boardList", boardList);
 
         return "board/boardList";
     }
 
-    @RequestMapping(value="writeForm")
-    public String writeForm(@ModelAttribute("data") BoardVO bvo){
+    /****************************************************
+     * 글쓰기 폼 출력하기
+     ***************************************************/
+    @RequestMapping(value="/writeForm")
+    public String writeForm(@ModelAttribute("data") BoardVO bvo) {
         log.info("writeForm 호출 성공");
 
         return "board/writeForm";
     }
 
-    public void boardInsert(@ModelAttribute("data") BoardVO bvo){
-        log.info("insert 호출 성공");
+    /*****************************************************
+     * 글쓰기 구현하기
+     ****************************************************/
+    @RequestMapping(value="boardInsert", method=RequestMethod.POST)
+    //@PostMapping("/boardInsert")
+    public String boardInsert(BoardVO bvo, Model model) {
+        log.info("boardInsert 호출 성공");
 
+        int result = 0;
+        String url = "";
 
+        result = boardService.boardInsert(bvo);
+        if(result == 1) {
+            url = "/board/boardList";
+        }else {
+            url ="/board/writeForm";
+        }
+        return "redirect:"+url;
     }
 }
+
