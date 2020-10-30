@@ -23,6 +23,13 @@
     <script type="text/javascript" src="/resources/include/js/jquery-1.12.4.min.js"></script>
     <script type="text/javascript" src="/resources/include/js/common.js"></script>
     <script type="text/javascript" src="/resources/include/dist/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+        $(function(){
+            $("#insertFormBtn").click(function(){
+                location.href = "/board/writeForm";
+            });
+        });
+    </script>
 </head>
 <body>
 <div class="container">

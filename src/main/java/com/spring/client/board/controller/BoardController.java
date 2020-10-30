@@ -28,4 +28,17 @@ public class BoardController {
 
         return "board/boardList";
     }
+
+    @RequestMapping(value="writeForm")
+    public String writeForm(@ModelAttribute("data") BoardVO bvo){
+        log.info("writeForm 호출 성공");
+
+        return "board/writeForm";
+    }
+
+    public void boardInsert(@ModelAttribute("data") BoardVO bvo){
+        log.info("insert 호출 성공");
+
+
+    }
 }
