@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
  */
 @Controller
 public class HomeController {
-	
+	/* 얘가 자꾸 화면 만져요 */
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	
 	/**
