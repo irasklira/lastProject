@@ -26,7 +26,6 @@ public class BoardMapperTests {
 
         for(BoardVO vo : list){
             log.info(vo);
-            log.info(vo);
         }
     }
 }
