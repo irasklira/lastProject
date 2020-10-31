@@ -33,6 +33,8 @@ public class HomeController rararar {
 		
 		model.addAttribute("serverTime", formattedDate );
 		
+		//바보바보바봐보바보바보
+		
 		return "home";
 	}
 	
