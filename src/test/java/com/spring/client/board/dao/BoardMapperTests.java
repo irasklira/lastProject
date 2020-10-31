@@ -19,25 +19,44 @@ public class BoardMapperTests {
     @Setter(onMethod_=@Autowired)
     private BoardDao boardDao;
 
-    @Test
-    public void testBoardList() {
-        BoardVO bvo = new BoardVO();
-        List<BoardVO> list = boardDao.boardList(bvo);
+//    @Test
+//    public void testBoardList() {
+//        BoardVO bvo = new BoardVO();
+//        List<BoardVO> list = boardDao.boardList(bvo);
+//
+//        for(BoardVO vo : list){
+//            log.info(vo);
+//        }
+//    }
 
-        for(BoardVO vo : list){
-            log.info(vo);
-        }
+//    @Test
+//    public void testBoardInsert() {
+//        BoardVO board = new BoardVO();
+//        board.setB_name("홍길동");
+//        board.setB_title("입력확인");
+//        board.setB_content("오늘도 힘내서 열심히 해 봅시다.");
+//        board.setB_pwd("1234");
+//
+//        int count = boardDao.boardInsert(board);
+//        log.info(count);
+//    }
+
+    @Test
+    public void testBoardDetail(){
+        BoardVO bvo = new BoardVO();
+        bvo.setB_num(1);
+        BoardVO board = boardDao.boardDetail(bvo);
+
+        log.info(board.toString());
     }
 
     @Test
-    public void testBoardInsert() {
-        BoardVO board = new BoardVO();
-        board.setB_name("홍길동");
-        board.setB_title("입력확인");
-        board.setB_content("오늘도 힘내서 열심히 해 봅시다.");
-        board.setB_pwd("1234");
+    public void testPwdConfirm() {
+        BoardVO bvo = new BoardVO();
+        bvo.setB_num(1);
+        bvo.setB_pwd("1234");
+        int result = boardDao.pwdConfirm(bvo);
 
-        boardDao.boardInsert(board);
-        log.info(board);
+        log.info("result : " + result);
     }
 }

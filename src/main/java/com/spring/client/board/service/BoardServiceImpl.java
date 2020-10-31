@@ -27,4 +27,39 @@ public class BoardServiceImpl implements BoardService {
         result = boardDao.boardInsert(bvo);
         return result;
     }
+
+    @Override
+    public BoardVO boardDetail(BoardVO bvo) {
+        BoardVO detail = null;
+        detail = boardDao.boardDetail(bvo);
+        if(detail != null){
+            detail.setB_content(detail.getB_content().toString().replaceAll("\n","<br>"));
+        }
+        return detail;
+    }
+
+    @Override
+    public int pwdConfirm(BoardVO bvo) {
+        int result = 0;
+        result = boardDao.pwdConfirm(bvo);
+
+        return result;
+    }
+
+    @Override
+    public BoardVO updateForm(BoardVO bvo) {
+        BoardVO result = null;
+        result = boardDao.updateForm(bvo);
+
+        return result;
+    }
+
+    @Override
+    public int boardUpdate(BoardVO bvo) {
+        int result = 0;
+        result = boardDao.boardUpdate(bvo);
+
+        return result;
+    }
+
 }

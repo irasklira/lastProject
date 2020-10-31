@@ -28,10 +28,25 @@
             $("#insertFormBtn").click(function(){
                 location.href = "/board/writeForm";
             });
+
+            $(".goDetail").click(function(){
+                var b_num = $(this).parent("tr").attr("data-num");
+                $("#b_num").val(b_num);
+                console.log("글번호 : " + b_num);
+
+                $("#detailForm").attr({
+                    "method" : "get",
+                    "action" : "/board/boardDetail"
+                });
+                $("#detailForm").submit();
+            });
         });
     </script>
 </head>
 <body>
+<form id="detailForm" name="detailForm">
+    <input type="hidden" id="b_num" name="b_num" />
+</form>
 <div class="container">
     <div id="boardList">
         <table summary="게시판 리스트" class="table table-striped">
@@ -46,12 +61,12 @@
             <tbody id="list" class="table-striped">
             <c:choose>
                 <c:when test="${not empty boardList}">
-                    <c:forEach var="vo" items="${boardList}" varStatus="status">
-                        <tr class="text-center" data-num="${vo.b_num}">
-                            <td>${vo.b_num}</td>
-                            <td class="text-left">${vo.b_title}</td>
-                            <td class="text-left">${vo.b_date}</td>
-                            <td>${vo.b_name}</td>
+                    <c:forEach var="board" items="${boardList}" varStatus="status">
+                        <tr class="text-center" data-num="${board.b_num}">
+                            <td>${board.b_num}</td>
+                            <td class="goDetail text-left">${board.b_title}</td>
+                            <td class="text-left">${board.b_date}</td>
+                            <td>${board.b_name}</td>
                         </tr>
                     </c:forEach>
                 </c:when>

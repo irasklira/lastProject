@@ -13,10 +13,11 @@ import com.spring.client.board.vo.BoardVO;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 @Log4j
-@RequestMapping("/board/")
+@RequestMapping("/board/*")
 @AllArgsConstructor
 public class BoardController {
 
@@ -49,7 +50,7 @@ public class BoardController {
     /*****************************************************
      * 글쓰기 구현하기
      ****************************************************/
-    @RequestMapping(value="boardInsert", method=RequestMethod.POST)
+    @RequestMapping(value="/boardInsert", method=RequestMethod.POST)
     //@PostMapping("/boardInsert")
     public String boardInsert(BoardVO bvo, Model model) {
         log.info("boardInsert 호출 성공");
@@ -61,9 +62,70 @@ public class BoardController {
         if(result == 1) {
             url = "/board/boardList";
         }else {
-            url ="/board/writeForm";
+            url = "/board/writeForm";
         }
         return "redirect:"+url;
+    }
+
+    @RequestMapping(value="/boardDetail", method=RequestMethod.GET)
+    public String boardDetail(@ModelAttribute("data") BoardVO bvo, Model model){
+        log.info("boardDetail 호출 성공");
+
+        BoardVO detail = boardService.boardDetail(bvo);
+        model.addAttribute("detail", detail);
+
+        return "board/boardDetail";
+    }
+
+    @ResponseBody
+    @RequestMapping(value="/pwdConfirm", method=RequestMethod.POST,
+    produces = "text/plain; charset=UTF-8")
+    public String pwdConfirm(BoardVO bvo){
+        log.info("pwdConfirm 호출 성공");
+        String value = "";
+
+        int result = boardService.pwdConfirm(bvo);
+        if(result == 1){
+            value="성공";
+        }
+        else{
+            value="실패";
+        }
+
+        log.info("result = " + result);
+
+        return value;
+    }
+
+    @RequestMapping(value="/updateForm", method=RequestMethod.GET)
+    public String updateForm(@ModelAttribute("data") BoardVO bvo, Model model){
+        log.info("updateForm 호출 성공");
+
+        BoardVO update = boardService.updateForm(bvo);
+        model.addAttribute("update", update);
+
+        return "board/updateForm";
+    }
+
+    @RequestMapping(value="/boardUpdate", method=RequestMethod.POST)
+    public String boardUpdate(BoardVO bvo){
+        log.info("boardUpdate 호출 성공");
+
+        int result = 0;
+        String url = "";
+
+        result = boardService.boardUpdate(bvo);
+
+        if(result == 1){
+            url = "/board/boardList";
+        }
+        else{
+            url = "/board/updateForm";
+        }
+
+        log.info("result = " + result);
+
+        return "redirect:" + url;
     }
 }
 

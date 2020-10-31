@@ -21,6 +21,8 @@
 
     <!-- Custom styles for this template -->
     <link href="/resources/include/css/sticky-footer-navbar.css" rel="stylesheet">
+    <link href="/resources/include/css/jumbotron.css" rel="stylesheet">
+    <link href="/resources/include/css/offcanvas.css" rel="stylesheet">
 
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
     <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
@@ -42,12 +44,41 @@
 
 <!-- Begin page content -->
 <div class="container">
+
     <div class="page-header">
-        <h1>노력은 배신하지 않는다.</h1>
-        <p>Efforts ard not betraying you....</p>
+        <div class="jumbotron">
+            <h1>역사는 역설을 거부한다.</h1>
+            <p>history abhors a paradox</p>
+        </div>
     </div>
+    <div class="row">
+        <div class="col-xs-6 col-lg-4">
+            <h2>게시판 관리</h2>
+            <p>처음으로 만든 게시판. 입력/수정/삭제 및 댓글 작성까지 처리 완료.</p>
+            <p><a class="btn btn-default" href="/board/boardList" role="button">View details &raquo;</a></p>
+        </div><!--/.col-xs-6.col-lg-4-->
+        <div class="col-xs-6 col-lg-4">
+            <h2>갤러리 게시판 관리</h2>
+            <p>썸네일 처리 게시판. 입력/수정/삭제 처리 완료. lightbox 처리.</p>
+            <p><a class="btn btn-default" href="/gallery/galleryList" role="button">View details &raquo;</a></p>
+        </div><!--/.col-xs-6.col-lg-4-->
+        <div class="col-xs-6 col-lg-4">
+            <h2>로그인 및 회원 관리</h2>
+            <p>회원 가입/정보 수정/회원 탈퇴 처리 완료. 로그인 및 로그아웃 처리 완료</p>
+            <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+        </div><!--/.col-xs-6.col-lg-4-->
+
+
+    </div><!--container -->
+
+    <hr>
+
+    <footer>
+        <p>&copy; Company 2014</p>
+    </footer>
 </div>
 
+<!-- footer -->
 <footer class="footer">
     <tiles:insertAttribute name="footer" />
 </footer>
@@ -58,6 +89,7 @@
 <!-- Placed at the end of the document so the pages load faster -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script src="/resources/include/dist/js/bootstrap.min.js"></script>
+<script src="/resources/include/js/offcanvas.js"></script>
 <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
 <script src="/resources/include/dist/assets/js/ie10-viewport-bug-workaround.js"></script>
 </body>
