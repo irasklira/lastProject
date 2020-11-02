@@ -11,4 +11,5 @@ public interface BoardDao {
     public int pwdConfirm(BoardVO bvo);
     public BoardVO updateForm(BoardVO bvo);
     public int boardUpdate(BoardVO bvo);
+    public int boardDelete(BoardVO bvo);
 }

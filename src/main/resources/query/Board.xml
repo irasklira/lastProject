@@ -40,4 +40,8 @@
         update SPRING_BOARD set B_NAME = #{b_name}, B_CONTENT = #{b_content}, B_TITLE = #{b_title},
         b_pwd = #{b_pwd} where b_num = #{b_num}
     </update>
+
+    <delete id="boardDelete" parameterType="board">
+        delete from SPRING_BOARD where b_num = #{b_num}
+    </delete>
 </mapper>

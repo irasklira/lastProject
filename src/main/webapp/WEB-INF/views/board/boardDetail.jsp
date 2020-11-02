@@ -23,34 +23,65 @@
                 butChk = 1;
 
                 $("#pwdBtn").click(function(){
-                    $.ajax({
-                        url : "/board/pwdConfirm",
-                        type : "post",
-                        data : $("#f_pwd").serialize(),
-                        dataType : "text",
-                        error : function(){
-                            alert("에러가 발생하였습니다.");
-                            history.back();
-                        },
-                        success : function(data){
-                            if(data == "성공"){
-                                $("#f_data").attr({
-                                    "method" : "get",
-                                    "action" : "/board/updateForm"
-                                });
-                                $("#f_data").submit();
+                    if(butChk == 1){
+                        $.ajax({
+                            url : "/board/pwdConfirm",
+                            type : "post",
+                            data : $("#f_pwd").serialize(),
+                            dataType : "text",
+                            error : function(){
+                                alert("에러가 발생하였습니다.");
+                                history.back();
+                            },
+                            success : function(data){
+                                if(data == "성공"){
+                                    $("#f_data").attr({
+                                        "method" : "get",
+                                        "action" : "/board/updateForm"
+                                    });
+                                    $("#f_data").submit();
+                                }
+                                else if(data == "실패"){
+                                    $("#msg").text("비밀번호가 틀렸습니다. 다시 입력해 주세요").css("color","red");
+                                }
                             }
-                            else if(data == "실패"){
-                                $("#msg").text("비밀번호가 틀렸습니다. 다시 입력해 주세요").css("color","red");
-                            }
-                        }
-                    });
+                        });
+                    }
                 });
             });
 
             //삭제 버튼 클릭시 처리이벤트
             $("#boardDeleteBtn").click(function(){
-                
+                $("#pwdChk").css("visibility", "visible");
+                $("#msg").text("작성시 입력한 비밀번호를 입력해 주세요.").css("color","#000099");
+                butChk = 2;
+
+                $("#pwdBtn").click(function(){
+                    if(butChk == 2){
+                        $.ajax({
+                            url : "/board/pwdConfirm",
+                            type : "post",
+                            data : $("#f_pwd").serialize(),
+                            dataType : "text",
+                            error : function(){
+                                alert("에러가 발생하였습니다.");
+                                history.back();
+                            },
+                            success : function(data){
+                                if(data == "성공"){
+                                    $("#f_data").attr({
+                                        "method" : "get",
+                                        "action" : "/board/boardDelete"
+                                    });
+                                    $("#f_data").submit();
+                                }
+                                else if(data == "실패"){
+                                    $("#msg").text("비밀번호가 틀렸습니다. 다시 입력해 주세요").css("color","red");
+                                }
+                            }
+                        });
+                    }
+                });
             });
 
             //글쓰기 버튼 클릭시 처리이벤트

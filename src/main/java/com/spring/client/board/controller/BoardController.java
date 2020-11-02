@@ -127,5 +127,26 @@ public class BoardController {
 
         return "redirect:" + url;
     }
+
+    @RequestMapping(value="/boardDelete", method=RequestMethod.GET)
+    public String boardDelete(BoardVO bvo){
+        log.info("boardDelete 호출 성공");
+
+        int result = 0;
+        String url = "";
+
+        result = boardService.boardDelete(bvo);
+
+        if(result == 1){
+            url = "/board/boardList";
+        }
+        else{
+            url = "/board/boardDetail";
+        }
+
+        log.info("result = " + result);
+
+        return "redirect:" + url;
+    }
 }
 
